@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shibam Pal — Social Links</title>
+    <style>
+        :root {
+            --bg-color: #f9f9f9;
+            --text-color: #222;
+            --container-bg: #fff;
+            --border-color: #e5e5e5;
+            --link-bg: #ddd;
+            --link-hover: #f0f0f0;
+            --subtext-color: #666;
+            --footer-color: #999;
+        }
+        
+        body.dark-mode {
+            --bg-color: #1e1e1e;
+            --text-color: #eee;
+            --container-bg: #2a2a2a;
+            --border-color: #444;
+            --link-bg: #444;
+            --link-hover: #333;
+            --subtext-color: #ccc;
+            --footer-color: #aaa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .toggle-btn {
+            position: fixed;
+            z-index: 3;
+            top: 15px;
+            right: 15px;
+            background-color: var(--container-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 6px 10px;
+            margin: 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: var(--container-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInContainer 0.8s ease-out forwards;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        svg {
+            fill: var(--subtext-color);
+        }
+        
+        @keyframes fadeInContainer {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            text-align: center;
+            padding: 30px 20px 20px;
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: fadeIn 0.8s ease-out 0.2s forwards;
+        }
+        
+        .profile-pic {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: #eee;
+            overflow: hidden;
+            margin: 0 auto 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            color: #aaa;
+            transition: background-color 0.3s;
+        }
+        
+        body.dark-mode .profile-pic {
+            background-color: #444;
+            color: #ccc;
+        }
+        
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .bio {
+            font-size: 14px;
+            color: var(--subtext-color);
+            max-width: 90%;
+            margin: 0 auto;
+            line-height: 1.4;
+            transition: color 0.3s;
+        }
+        
+        .links-container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 10px 15px;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid #ccc;
+            /* default left border */
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.2s, box-shadow 0.2s;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 0.6s ease-out forwards;
+            position: relative;
+        }
+        
+        .social-link:hover {
+            background-color: var(--link-hover);
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-link:active {
+            transform: scale(0.97);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-link:nth-child(1) {
+            animation-delay: 0.4s;
+            border-left-color: #3b5998;
+        }
+        
+        .social-link:nth-child(2) {
+            animation-delay: 0.55s;
+            border-left: 5px solid;
+            border-left-color: #FF90B6;
+        }
+        
+        .social-link:nth-child(3) {
+            animation-delay: 0.7s;
+            border-left-color: #333;
+        }
+        
+        .social-link:nth-child(4) {
+            animation-delay: 0.85s;
+            border-left-color: #0088cc;
+        }
+        
+        .social-link:nth-child(5) {
+            animation-delay: 1s;
+            border-left-color: #0077b5;
+        }
+        
+        .social-link:nth-child(6) {
+            animation-delay: 1.15s;
+            border-left-color: #2A2626;
+        }
+        
+        .social-link:nth-child(7) {
+            animation-delay: 1.15s;
+            border-left-color: #FEB360;
+        }
+        
+        /* X/Twitter */
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 12px;
+            background-color: transparent;
+            color: #000;
+            flex-shrink: 0;
+            transition: background-color 0.3s, color 0.3s;
+            z-index: 1;
+        }
+        
+        .link-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .link-title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .link-url {
+            font-size: 13px;
+            color: var(--subtext-color);
+            transition: color 0.3s;
+        }
+        
+        .private {
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translate(-50%, -30%);
+            margin: 0;
+            z-index: 10;
+        }
+        
+        .private svg {
+            height: 20px;
+            width: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 13px;
+            color: var(--footer-color);
+            border-top: 1px solid var(--border-color);
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1.3s forwards;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        
+        @media (max-width:480px) {
+            .container {
+                border-radius: 0;
+            }
+            
+            .profile-pic {
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="toggle-btn">🌙 Dark Mode</button>
+    
+    <div class="container">
+        <div class="header">
+            <div class="profile-pic"><img src="./profile.jpg" alt="Profile"></div>
+            <h1>Shibam Pal</h1>
+            <p class="bio">Tech enthusiast • Dreamer • Turning ideas into reality ✨</p>
+        </div>
+        
+        <div class="links-container">
+            <a href="https://www.facebook.com/shbmpp" target="_blank" class="social-link">
+                <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                        <path d="M576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 440 146.7 540.8 258.2 568.5L258.2 398.2L205.4 398.2L205.4 320L258.2 320L258.2 286.3C258.2 199.2 297.6 158.8 383.2 158.8C399.4 158.8 427.4 162 438.9 165.2L438.9 236C432.9 235.4 422.4 235 409.3 235C367.3 235 351.1 250.9 351.1 292.2L351.1 320L434.7 320L420.3 398.2L351 398.2L351 574.1C477.8 558.8 576 450.9 576 320z" />
+                    </svg></div>
+                <div class="link-text">
+                    <div class="link-title">Facebook</div>
+                    <div class="link-url">facebook.com/shbmpp</div>
+                </div>
+            </a>
+            <a href="https://www.instagram.com/shbmpp" target="_blank" class="social-link">
+                <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                        <path d="M320.3 205C256.8 204.8 205.2 256.2 205 319.7C204.8 383.2 256.2 434.8 319.7 435C383.2 435.2 434.8 383.8 435 320.3C435.2 256.8 383.8 205.2 320.3 205zM319.7 245.4C360.9 245.2 394.4 278.5 394.6 319.7C394.8 360.9 361.5 394.4 320.3 394.6C279.1 394.8 245.6 361.5 245.4 320.3C245.2 279.1 278.5 245.6 319.7 245.4zM413.1 200.3C413.1 185.5 425.1 173.5 439.9 173.5C454.7 173.5 466.7 185.5 466.7 200.3C466.7 215.1 454.7 227.1 439.9 227.1C425.1 227.1 413.1 215.1 413.1 200.3zM542.8 227.5C541.1 191.6 532.9 159.8 506.6 133.6C480.4 107.4 448.6 99.2 412.7 97.4C375.7 95.3 264.8 95.3 227.8 97.4C192 99.1 160.2 107.3 133.9 133.5C107.6 159.7 99.5 191.5 97.7 227.4C95.6 264.4 95.6 375.3 97.7 412.3C99.4 448.2 107.6 480 133.9 506.2C160.2 532.4 191.9 540.6 227.8 542.4C264.8 544.5 375.7 544.5 412.7 542.4C448.6 540.7 480.4 532.5 506.6 506.2C532.8 480 541 448.2 542.8 412.3C544.9 375.3 544.9 264.5 542.8 227.5zM495 452C487.2 471.6 472.1 486.7 452.4 494.6C422.9 506.3 352.9 503.6 320.3 503.6C287.7 503.6 217.6 506.2 188.2 494.6C168.6 486.8 153.5 471.7 145.6 452C133.9 422.5 136.6 352.5 136.6 319.9C136.6 287.3 134 217.2 145.6 187.8C153.4 168.2 168.5 153.1 188.2 145.2C217.7 133.5 287.7 136.2 320.3 136.2C352.9 136.2 423 133.6 452.4 145.2C472 153 487.1 168.1 495 187.8C506.7 217.3 504 287.3 504 319.9C504 352.5 506.7 422.6 495 452z" />
+                    </svg></div>
+                <div class="link-text">
+                    <div class="link-title">Instagram</div>
+                    <div class="link-url">instagram.com/shbmpp</div>
+                </div>
+            </a>
+            <a href="https://www.github.com/shbmpp" target="_blank" class="social-link">
+                <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                        <path d="M237.9 461.4C237.9 463.4 235.6 465 232.7 465C229.4 465.3 227.1 463.7 227.1 461.4C227.1 459.4 229.4 457.8 232.3 457.8C235.3 457.5 237.9 459.1 237.9 461.4zM206.8 456.9C206.1 458.9 208.1 461.2 211.1 461.8C213.7 462.8 216.7 461.8 217.3 459.8C217.9 457.8 216 455.5 213 454.6C210.4 453.9 207.5 454.9 206.8 456.9zM251 455.2C248.1 455.9 246.1 457.8 246.4 460.1C246.7 462.1 249.3 463.4 252.3 462.7C255.2 462 257.2 460.1 256.9 458.1C256.6 456.2 253.9 454.9 251 455.2zM316.8 72C178.1 72 72 177.3 72 316C72 426.9 141.8 521.8 241.5 555.2C254.3 557.5 258.8 549.6 258.8 543.1C258.8 536.9 258.5 502.7 258.5 481.7C258.5 481.7 188.5 496.7 173.8 451.9C173.8 451.9 162.4 422.8 146 415.3C146 415.3 123.1 399.6 147.6 399.9C147.6 399.9 172.5 401.9 186.2 425.7C208.1 464.3 244.8 453.2 259.1 446.6C261.4 430.6 267.9 419.5 275.1 412.9C219.2 406.7 162.8 398.6 162.8 302.4C162.8 274.9 170.4 261.1 186.4 243.5C183.8 237 175.3 210.2 189 175.6C209.9 169.1 258 202.6 258 202.6C278 197 299.5 194.1 320.8 194.1C342.1 194.1 363.6 197 383.6 202.6C383.6 202.6 431.7 169 452.6 175.6C466.3 210.3 457.8 237 455.2 243.5C471.2 261.2 481 275 481 302.4C481 398.9 422.1 406.6 366.2 412.9C375.4 420.8 383.2 435.8 383.2 459.3C383.2 493 382.9 534.7 382.9 542.9C382.9 549.4 387.5 557.3 400.2 555C500.2 521.8 568 426.9 568 316C568 177.3 455.5 72 316.8 72zM169.2 416.9C167.9 417.9 168.2 420.2 169.9 422.1C171.5 423.7 173.8 424.4 175.1 423.1C176.4 422.1 176.1 419.8 174.4 417.9C172.8 416.3 170.5 415.6 169.2 416.9zM158.4 408.8C157.7 410.1 158.7 411.7 160.7 412.7C162.3 413.7 164.3 413.4 165 412C165.7 410.7 164.7 409.1 162.7 408.1C160.7 407.5 159.1 407.8 158.4 408.8zM190.8 444.4C189.2 445.7 189.8 448.7 192.1 450.6C194.4 452.9 197.3 453.2 198.6 451.6C199.9 450.3 199.3 447.3 197.3 445.4C195.1 443.1 192.1 442.8 190.8 444.4zM179.4 429.7C177.8 430.7 177.8 433.3 179.4 435.6C181 437.9 183.7 438.9 185 437.9C186.6 436.6 186.6 434 185 431.7C183.6 429.4 181 428.4 179.4 429.7z" />
+                    </svg></div>
+                <div class="link-text">
+                    <div class="link-title">GitHub</div>
+                    <div class="link-url">github.com/shbmpp</div>
+                </div>
+            </a>
+            <a href="https://t.me/shbmpp" target="_blank" class="social-link">
+                <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                        <path d="M320 72C183 72 72 183 72 320C72 457 183 568 320 568C457 568 568 457 568 320C568 183 457 72 320 72zM435 240.7C431.3 279.9 415.1 375.1 406.9 419C403.4 437.6 396.6 443.8 390 444.4C375.6 445.7 364.7 434.9 350.7 425.7C328.9 411.4 316.5 402.5 295.4 388.5C270.9 372.4 286.8 363.5 300.7 349C304.4 345.2 367.8 287.5 369 282.3C369.2 281.6 369.3 279.2 367.8 277.9C366.3 276.6 364.2 277.1 362.7 277.4C360.5 277.9 325.6 300.9 258.1 346.5C248.2 353.3 239.2 356.6 231.2 356.4C222.3 356.2 205.3 351.4 192.6 347.3C177.1 342.3 164.7 339.6 165.8 331C166.4 326.5 172.5 322 184.2 317.3C256.5 285.8 304.7 265 328.8 255C397.7 226.4 412 221.4 421.3 221.2C423.4 221.2 427.9 221.7 430.9 224.1C432.9 225.8 434.1 228.2 434.4 230.8C434.9 234 435 237.3 434.8 240.6z" />
+                    </svg></div>
+                <div class="link-text">
+                    <div class="link-title">Telegram</div>
+                    <div class="link-url">t.me/shbmpp</div>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/shbmpp" target="_blank" class="social-link">
+                <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                        <path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM165 266.2L231.5 266.2L231.5 480L165 480L165 266.2zM236.7 198.5C236.7 219.8 219.5 237 198.2 237C176.9 237 159.7 219.8 159.7 198.5C159.7 177.2 176.9 160 198.2 160C219.5 160 236.7 177.2 236.7 198.5zM413.9 480L413.9 376C413.9 351.2 413.4 319.3 379.4 319.3C344.8 319.3 339.5 346.3 339.5 374.2L339.5 480L273.1 480L273.1 266.2L336.8 266.2L336.8 295.4L337.7 295.4C346.6 278.6 368.3 260.9 400.6 260.9C467.8 260.9 480.3 305.2 480.3 362.8L480.3 480L413.9 480z" />
+                    </svg></div>
+                <div class="link-text">
+                    <div class="link-title">LinkedIn</div>
+                    <div class="link-url">linkedin.com/in/shbmpp</div>
+                </div>
+            </a>
+            <a href="https://www.twitter.com/shbmpp" target="_blank" class="social-link">
+                <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                        <path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM457.1 180L353.3 298.6L475.4 460L379.8 460L305 362.1L219.3 460L171.8 460L282.8 333.1L165.7 180L263.7 180L331.4 269.5L409.6 180L457.1 180zM419.3 431.6L249.4 206.9L221.1 206.9L392.9 431.6L419.3 431.6z" />
+                    </svg></div>
+                <div class="link-text">
+                    <div class="link-title">X (Twitter)</div>
+                    <div class="link-url">twitter.com/shbmpp</div>
+                </div>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1iXFo5FTjCIVdnWG5S9IYMBvZnswiP2qn" target="_blank" class="social-link">
+                <div class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <path d="M403 378.9L239.4 96L400.6 96L564.2 378.9L403 378.9zM265.5 402.5L184.9 544L495.4 544L576 402.5L265.5 402.5zM218.1 131.4L64 402.5L144.6 544L301 272.8L218.1 131.4z" />
+                    </svg></div>
+                <div class="private"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                        <path d="M256 160L256 224L384 224L384 160C384 124.7 355.3 96 320 96C284.7 96 256 124.7 256 160zM192 224L192 160C192 89.3 249.3 32 320 32C390.7 32 448 89.3 448 160L448 224C483.3 224 512 252.7 512 288L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 288C128 252.7 156.7 224 192 224z" />
+                    </svg></div>
+                <div class="link-text">
+                    <div class="link-title">Google Drive</div>
+                </div>
+            </a>
+        </div>
+        
+        <div class="footer">© 2025 shbmpp</div>
+    </div>
+    
+    <script>
+        const toggleBtn = document.querySelector('.toggle-btn');
+        
+        // Detect system preference on load
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            toggleBtn.textContent = '☀️ Light Mode';
+        }
+        
+        // Toggle button functionality
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+        });
+        
+        // Optional: Listen for system changes dynamically
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!document.body.classList.contains('dark-mode-manual')) {
+                document.body.classList.toggle('dark-mode', e.matches);
+                toggleBtn.textContent = e.matches ? '☀️ Light Mode' : '🌙 Dark Mode';
+            }
+        });
+    </script>
+</body>
+
+</html>
